@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ykrank on 2017/2/15.
@@ -41,8 +42,13 @@ public final class Vote {
     private int voteCount;
     
     @JsonCreator
-    public Vote(){
-        
+    public Vote(@JsonProperty("allowvote") String allowVote, @JsonProperty("multiple") String multiple,
+                @JsonProperty("visiblepoll") String visiblePoll, @JsonProperty("remaintime") List<Integer> time,
+                @JsonProperty("polloptions") Map<Integer, VoteOption> pollOptions) {
+        this.allow = "1".equals(allowVote);
+        this.multiple = "1".equals(multiple);
+        this.visibleVote = "1".equals(visiblePoll);
+        // TODO: 2017/4/25 数据的解析
     }
 
     public boolean isAllow() {
