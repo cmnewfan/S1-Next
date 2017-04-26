@@ -55,6 +55,7 @@ public final class Vote {
         for (int i = 0; i < pollOptions.size(); i++) {
             options.add(pollOptions.get(i));
         }
+        this.voteOptions = options;
     }
 
     public boolean isAllow() {
