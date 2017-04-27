@@ -1,5 +1,6 @@
 package me.ykrank.s1next.widget.hostcheck;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
@@ -27,9 +28,9 @@ public class BaseHostUrl {
         refreshForceHostIp();
     }
 
-    @Nullable
+    @NonNull
     public String getBaseUrl() {
-        return baseUrl;
+        return TextUtils.isEmpty(baseUrl) ? Api.BASE_URL : baseUrl;
     }
 
     @Nullable
