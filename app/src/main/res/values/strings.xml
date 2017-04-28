@@ -238,4 +238,5 @@
     <string name="title_history">History</string>
     <string name="histories">Histories</string>
     <string name="vote_view_all_voter">View all voter</string>
+    <string name="go_vote">Go vote</string>
 </resources>
