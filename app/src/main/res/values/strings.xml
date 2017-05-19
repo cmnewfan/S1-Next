@@ -237,4 +237,5 @@
     <string name="error_force_host_ip">Error host ip list: %s</string>
     <string name="title_history">History</string>
     <string name="histories">Histories</string>
+    <string name="prompt_answer">Answer</string>
 </resources>

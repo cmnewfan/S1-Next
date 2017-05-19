@@ -102,23 +102,23 @@ abstract class ProgressDialogFragment<D> extends BaseDialogFragment {
     }
 
     /**
-     * @see BaseRecyclerViewFragment#load(int)
+     * @see BaseRecyclerViewFragment#load(int) 
      */
     private void request() {
         Observable<D> sourceObservable = getSourceObservable();
         if (sourceObservable != null) {
-            mDisposable = getSourceObservable().subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doAfterTerminate(this::finallyDo)
-                    .subscribe(this::onNext, this::onError);
+        mDisposable = getSourceObservable().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(this::finallyDo)
+                .subscribe(this::onNext, this::onError);
         } else {
             L.report(new IllegalStateException("SourceObservable is null when SimpleProgressDialogFragment onResume"));
             getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
-        }
+    }
     }
 
     /**
-     * @see BaseRecyclerViewFragment#getSourceObservable(int)
+     * @see BaseRecyclerViewFragment#getSourceObservable(int) 
      */
     abstract Observable<D> getSourceObservable();
 
