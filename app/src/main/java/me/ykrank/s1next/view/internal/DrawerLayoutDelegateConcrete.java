@@ -130,8 +130,8 @@ public final class DrawerLayoutDelegateConcrete extends DrawerLayoutDelegate
      * refresh label in navigation menu to show whether new pm or notice
      */
     public void refreshNoticeMenuItem() {
-        pmNoticeBinding.setMsg(mDataPreferencesManager.hasNewPm() ? "new" : null);
-        noteNoticeBinding.setMsg(mDataPreferencesManager.hasNewNotice() ? "new" : null);
+        pmNoticeBinding.setMsg(mUser.isLogged() && mDataPreferencesManager.hasNewPm() ? "new" : null);
+        noteNoticeBinding.setMsg(mUser.isLogged() && mDataPreferencesManager.hasNewNotice() ? "new" : null);
     }
 
     @Override

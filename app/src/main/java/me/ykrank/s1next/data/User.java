@@ -13,6 +13,8 @@ public class User {
 
     private volatile String authenticityToken;
 
+    private volatile String appSecureToken;
+
     private volatile boolean logged;
 
     public String getUid() {
@@ -45,6 +47,14 @@ public class User {
 
     public void setAuthenticityToken(String authenticityToken) {
         this.authenticityToken = authenticityToken;
+    }
+
+    public String getAppSecureToken() {
+        return appSecureToken;
+    }
+
+    public void setAppSecureToken(String appSecureToken) {
+        this.appSecureToken = appSecureToken;
     }
 
     public boolean isLogged() {

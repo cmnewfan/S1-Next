@@ -238,4 +238,6 @@
     <string name="title_history">History</string>
     <string name="histories">Histories</string>
     <string name="prompt_answer">Answer</string>
+    <string name="app_login_info_error">Login app server error</string>
+    <string name="action_auto_sign">Auto sign</string>
 </resources>
