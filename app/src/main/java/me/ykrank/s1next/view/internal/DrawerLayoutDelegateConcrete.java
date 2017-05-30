@@ -22,6 +22,7 @@ import me.ykrank.s1next.data.pref.DataPreferencesManager;
 import me.ykrank.s1next.data.pref.ThemeManager;
 import me.ykrank.s1next.databinding.ActionViewNoticeCountBinding;
 import me.ykrank.s1next.databinding.NavigationViewHeaderBinding;
+import me.ykrank.s1next.view.activity.AppLoginActivity;
 import me.ykrank.s1next.view.activity.FavouriteListActivity;
 import me.ykrank.s1next.view.activity.ForumActivity;
 import me.ykrank.s1next.view.activity.HelpActivity;
@@ -116,6 +117,8 @@ public final class DrawerLayoutDelegateConcrete extends DrawerLayoutDelegate
                 closeDrawer(() -> LoginActivity.startLoginActivityForResultMessage(mFragmentActivity));
             }
         });
+
+        binding.drawerAutoSign.setOnClickListener(v -> closeDrawer(() -> AppLoginActivity.startLoginActivityForResultMessage(mFragmentActivity)));
     }
 
     private void setupNavDrawerNotice(NavigationView navigationView) {
