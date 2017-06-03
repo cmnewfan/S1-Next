@@ -16,6 +16,8 @@ open class User {
 
     @Volatile open var isLogged: Boolean = false
 
+    @Volatile var isSigned: Boolean = false
+
     val isAppLogged: Boolean
         get() = !TextUtils.isEmpty(appSecureToken)
 

@@ -8,11 +8,12 @@ import io.reactivex.functions.Function;
 import me.ykrank.s1next.App;
 import me.ykrank.s1next.AppComponent;
 import me.ykrank.s1next.data.User;
+import me.ykrank.s1next.data.api.app.model.AppDataWrapper;
+import me.ykrank.s1next.data.api.app.model.AppResult;
 import me.ykrank.s1next.data.api.model.Account;
 import me.ykrank.s1next.data.api.model.wrapper.AccountResultWrapper;
 import me.ykrank.s1next.data.api.model.wrapper.OriginWrapper;
 import me.ykrank.s1next.util.L;
-import me.ykrank.s1next.data.api.model.wrapper.OriginWrapper;
 
 /**
  * Created by ykrank on 2016/10/18.
@@ -77,6 +78,30 @@ public class ApiFlatTransformer {
         return flatMappedWithAuthenticityToken(component.getS1Service(), component.getUserValidator(),
                 component.getUser(), func);
     }
+
+    /**
+     * A rxjava transformer to transform app api data
+     *
+     * @param <T> data
+     */
+    public static <T> ObservableTransformer<AppDataWrapper<T>, T> appDataErrorTransformer() {
+        return observable -> observable.flatMap(wrapper -> {
+            if (!wrapper.isSuccess()) {
+                return Observable.error(new ApiException.AppServerException(wrapper.getMessage()));
+            }
+            return createData(wrapper.getData());
+        });
+    }
+
+    public static ObservableTransformer<AppResult, AppResult> appApiErrorTransformer() {
+        return observable -> observable.flatMap(wrapper -> {
+            if (!wrapper.isSuccess()) {
+                return Observable.error(new ApiException.AppServerException(wrapper.getMessage()));
+            }
+            return createData(wrapper);
+        });
+    }
+
     private static <T> Observable<T> createData(T t) {
         return Observable.create(emitter -> {
             try {

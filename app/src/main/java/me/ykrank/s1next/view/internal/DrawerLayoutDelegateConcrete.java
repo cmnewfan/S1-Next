@@ -118,7 +118,11 @@ public final class DrawerLayoutDelegateConcrete extends DrawerLayoutDelegate
             }
         });
 
-        binding.drawerAutoSign.setOnClickListener(v -> closeDrawer(() -> AppLoginActivity.startLoginActivityForResultMessage(mFragmentActivity)));
+        binding.drawerAutoSign.setOnClickListener(v -> {
+            if (!mUser.isAppLogged()) {
+                closeDrawer(() -> AppLoginActivity.startLoginActivityForResultMessage(mFragmentActivity));
+            }
+        });
     }
 
     private void setupNavDrawerNotice(NavigationView navigationView) {
